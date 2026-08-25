@@ -3,18 +3,25 @@ import {
   addBootstrap,
   addIframe,
   addCtaTrigger,
+  hideChatBubble,
 } from "../../lib/proxy";
 
 export const dynamic = "force-dynamic";
 
-// The iframe is standalone, but the bootstrap still loads here so the chat
-// bubble stays present on every page of the site.
-export async function GET() {
+// The iframe is standalone, but the bootstrap still loads here so the nav CTA
+// keeps working. Only the floating bubble is suppressed, and only on this page.
+export async function GET(request) {
   return renderPage({
+    request,
     path: "get-help",
     transform: (html) =>
-      addCtaTrigger(
-        addIframe(addBootstrap(html), '<div class="card-grid card-grid--icons'),
+      hideChatBubble(
+        addCtaTrigger(
+          addIframe(
+            addBootstrap(html),
+            '<div class="card-grid card-grid--icons',
+          ),
+        ),
       ),
   });
 }

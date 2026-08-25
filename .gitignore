@@ -8,3 +8,4 @@ out
 !.env.example
 AGENTS.md
 CLAUDE.md
+.cache/
