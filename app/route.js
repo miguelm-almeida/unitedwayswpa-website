@@ -2,6 +2,7 @@ import {
   renderPage,
   addBootstrap,
   addSearchBar,
+  addNavSearch,
   addCtaTrigger,
 } from "../lib/proxy";
 
@@ -12,8 +13,10 @@ export async function GET(request) {
     request,
     path: "",
     transform: (html) =>
-      addCtaTrigger(
-        addSearchBar(addBootstrap(html), '<div class="page-intro">'),
+      addNavSearch(
+        addCtaTrigger(
+          addSearchBar(addBootstrap(html), '<div class="page-intro">'),
+        ),
       ),
   });
 }
