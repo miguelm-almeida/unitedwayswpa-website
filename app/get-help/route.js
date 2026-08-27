@@ -2,26 +2,20 @@ import {
   renderPage,
   addBootstrap,
   addIframe,
-  addCtaTrigger,
   hideChatBubble,
 } from "../../lib/proxy";
 
 export const dynamic = "force-dynamic";
 
-// The iframe is standalone, but the bootstrap still loads here so the nav CTA
-// keeps working. Only the floating bubble is suppressed, and only on this page.
+// The inline panel already fills this page, so the floating launcher would be
+// redundant here and is hidden. Only on this page.
 export async function GET(request) {
   return renderPage({
     request,
     path: "get-help",
     transform: (html) =>
       hideChatBubble(
-        addCtaTrigger(
-          addIframe(
-            addBootstrap(html),
-            '<div class="card-grid card-grid--icons',
-          ),
-        ),
+        addIframe(addBootstrap(html), '<div class="card-grid card-grid--icons'),
       ),
   });
 }

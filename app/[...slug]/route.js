@@ -1,4 +1,4 @@
-import { renderPage, addBootstrap, addCtaTrigger } from "../../lib/proxy";
+import { renderPage, addBootstrap } from "../../lib/proxy";
 
 export const dynamic = "force-dynamic";
 
@@ -12,6 +12,6 @@ export async function GET(request, { params }) {
   return renderPage({
     request,
     path: slug.join("/"),
-    transform: (html) => addCtaTrigger(addBootstrap(html)),
+    transform: addBootstrap,
   });
 }
