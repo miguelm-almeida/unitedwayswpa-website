@@ -2,7 +2,6 @@ import {
   renderPage,
   addBootstrap,
   addIframe,
-  addNavSearch,
   addCtaTrigger,
   hideChatBubble,
 } from "../../lib/proxy";
@@ -17,12 +16,10 @@ export async function GET(request) {
     path: "get-help",
     transform: (html) =>
       hideChatBubble(
-        addNavSearch(
-          addCtaTrigger(
-            addIframe(
-              addBootstrap(html),
-              '<div class="card-grid card-grid--icons',
-            ),
+        addCtaTrigger(
+          addIframe(
+            addBootstrap(html),
+            '<div class="card-grid card-grid--icons',
           ),
         ),
       ),

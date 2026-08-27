@@ -1,9 +1,4 @@
-import {
-  renderPage,
-  addBootstrap,
-  addNavSearch,
-  addCtaTrigger,
-} from "../../lib/proxy";
+import { renderPage, addBootstrap, addCtaTrigger } from "../../lib/proxy";
 
 export const dynamic = "force-dynamic";
 
@@ -17,6 +12,6 @@ export async function GET(request, { params }) {
   return renderPage({
     request,
     path: slug.join("/"),
-    transform: (html) => addNavSearch(addCtaTrigger(addBootstrap(html))),
+    transform: (html) => addCtaTrigger(addBootstrap(html)),
   });
 }
