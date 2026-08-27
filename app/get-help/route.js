@@ -1,4 +1,9 @@
-import { renderPage, addBootstrap, addSearchBar } from "../../lib/proxy";
+import {
+  renderPage,
+  addBootstrap,
+  addSearchBar,
+  addChatCard,
+} from "../../lib/proxy";
 
 export const dynamic = "force-dynamic";
 
@@ -10,6 +15,6 @@ export async function GET(request) {
     request,
     path: "get-help",
     transform: (html) =>
-      addSearchBar(addBootstrap(html), '<div class="content">'),
+      addChatCard(addSearchBar(addBootstrap(html), '<div class="content">')),
   });
 }
