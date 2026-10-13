@@ -1,7 +1,7 @@
 import {
   renderPage,
   addBootstrap,
-  addSearchBar,
+  addHeroSearch,
   addNavSearch,
 } from "../lib/proxy";
 
@@ -12,6 +12,6 @@ export async function GET(request) {
     request,
     path: "",
     transform: (html) =>
-      addNavSearch(addSearchBar(addBootstrap(html), '<div class="page-intro">')),
+      addNavSearch(addHeroSearch(addBootstrap(html))),
   });
 }

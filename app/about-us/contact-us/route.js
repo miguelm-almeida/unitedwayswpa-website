@@ -1,9 +1,8 @@
 import {
   renderPage,
   addBootstrap,
-  addIframe,
+  addSearchBar,
   addNavSearch,
-  hideChatBubble,
 } from "../../../lib/proxy";
 
 export const dynamic = "force-dynamic";
@@ -13,8 +12,6 @@ export async function GET(request) {
     request,
     path: "about-us/contact-us",
     transform: (html) =>
-      hideChatBubble(
-        addNavSearch(addIframe(addBootstrap(html), '<div class="form">')),
-      ),
+      addNavSearch(addSearchBar(addBootstrap(html), '<div class="form">')),
   });
 }
