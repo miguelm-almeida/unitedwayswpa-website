@@ -2,6 +2,7 @@ import {
   renderPage,
   addBootstrap,
   addSearchBar,
+  addNavSearch,
   addChatCard,
 } from "../../lib/proxy";
 
@@ -15,6 +16,8 @@ export async function GET(request) {
     request,
     path: "get-help",
     transform: (html) =>
-      addChatCard(addSearchBar(addBootstrap(html), '<div class="content">')),
+      addNavSearch(
+        addChatCard(addSearchBar(addBootstrap(html), '<div class="content">')),
+      ),
   });
 }

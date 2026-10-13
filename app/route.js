@@ -1,14 +1,17 @@
-import { renderPage, addBootstrap } from "../lib/proxy";
+import {
+  renderPage,
+  addBootstrap,
+  addSearchBar,
+  addNavSearch,
+} from "../lib/proxy";
 
 export const dynamic = "force-dynamic";
 
-// Per UW feedback the homepage carries no visible search embed: the bootstrap
-// only brings the bottom-right chat bubble, and the header keeps the site's
-// own Search link.
 export async function GET(request) {
   return renderPage({
     request,
     path: "",
-    transform: addBootstrap,
+    transform: (html) =>
+      addNavSearch(addSearchBar(addBootstrap(html), '<div class="page-intro">')),
   });
 }
