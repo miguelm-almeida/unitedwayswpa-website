@@ -12,6 +12,6 @@ export async function GET(request) {
     request,
     path: "about-us/contact-us",
     transform: (html) =>
-      addNavSearch(addSearchBar(addBootstrap(html), '<div class="form">')),
+      addNavSearch(addSearchBar(addBootstrap(html), '<div class="cta">')),
   });
 }
